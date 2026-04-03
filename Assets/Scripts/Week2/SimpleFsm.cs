@@ -28,7 +28,7 @@ public class SimpleFsm : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             state = PlayerState.Jump;
 
-        Debug.Log(state);
+        //Debug.Log(state);
         UpdateMovement(input);
     }
     private void UpdateMovement(Vector2 input)
