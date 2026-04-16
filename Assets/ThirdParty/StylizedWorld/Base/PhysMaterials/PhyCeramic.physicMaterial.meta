@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e589a515718d6fa429a1f1a5d25da9fd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 13400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199505
+  packageName: Stylized Park Props
+  packageVersion: 1.0
+  assetPath: Assets/TirgamesAssets/StylizedWorld/Base/PhysMaterials/PhyCeramic.physicMaterial
+  uploadId: 520518

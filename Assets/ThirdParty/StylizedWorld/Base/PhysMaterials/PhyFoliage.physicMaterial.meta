@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 83d40cc6f25564543a2ebcbe86422a29
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 13400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199505
+  packageName: Stylized Park Props
+  packageVersion: 1.0
+  assetPath: Assets/TirgamesAssets/StylizedWorld/Base/PhysMaterials/PhyFoliage.physicMaterial
+  uploadId: 520518
