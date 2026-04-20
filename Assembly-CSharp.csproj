@@ -70,84 +70,172 @@
     <Analyzer Include="D:\UnityProject\School10WeekProject\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoObject.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Utilities\Actions\UnityAction.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\IKCtrlRightHand.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerMovement.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoModuleLib.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\Suimono_UnderwaterFog.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Week2\AutoExpandFloor.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Utilities\ExposableProperties\ExposableMonobehavior.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerBoat.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\cameraCausticsHandler.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\BossCamera\BossLookAt.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_EffectTrail.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\SplashScreen\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\ActivateCameraWithDistance.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\ui_suimonoFps.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetTargetController.cs" />
     <Compile Include="Assets\Scripts\Week1\PlayerInfo.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_InputController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\SpringCollider.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerCharacter.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\ExampleHelpWindow.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\3rdPersonWithAimMode\ActivateOnKeypress.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\MixingCameraBlend.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\PlayerMovePhysics.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerMaster.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\InvokeEventFromInspector.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Trigger volumes\GenericTrigger.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\GUI\guiFPS.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Utilities\Actions\Trigger.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\utility_AdjustCulling.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Week3\ButtonPushRight.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerOrbit.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Anywhere Door\TagChanger.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\utility_SaveMesh.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\CinemachineFadeOutNearbyObjects.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoDepth.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\ui_suimonoHandler.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\Suimono_ShorelineObject.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\ActivateCamOnPlay.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_LightHandler.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\Suimono_DistanceBlur.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\UnityChanControlScriptWithRgidBody.cs" />
     <Compile Include="Assets\Scripts\Week3\EnemyList.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_buoyancy.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoModule.cs" />
     <Compile Include="Assets\Scripts\Week5\AimToMouse.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement2D.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\SpringManager.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_soundModule.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerLookAt.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_animBoat.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\2D\MouseScrollZoom2D.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetProperty.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Scripting\ScriptingExample.cs" />
+    <Compile Include="Assets\ThirdParty\MeshCombiner\Scripts\MeshCombiner.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_causticObject.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\BossCamera\CustomLockCameraY.cs" />
     <Compile Include="Assets\Scripts\Week4\EnemySensor.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovementNoCamera.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\utility_ConvertToSurface.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\SimpleElevator.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_trigger.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\2D\LoseSightWhenTargetsFallsOffThePlatform.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\SpringBone.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_animCharacter.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\ThirdPersonFollowDistanceModifier.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoCamera_depth.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\PlayerMoveOnSphere.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\RandomWind.cs" />
     <Compile Include="Assets\Scripts\Project3\CameraFSM.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\utility_EventTrigger.cs" />
     <Compile Include="Assets\Scripts\Week3\ButtonPushLeft.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_causticModule.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Utilities\ExposableProperties\ExposePropertyAttribute.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\Random.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\SuimonoModuleFX.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\DualTarget\MoveAimTarget.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\IdleChanger.cs" />
     <Compile Include="Assets\Scripts\Week2\SimpleFsm.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\cameraTools.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\DualTarget\PointAtAimTarget.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_EffectObject.cs" />
     <Compile Include="Assets\Scripts\Project3\FreeFlyCamera.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\InputSystemHelper.cs" />
     <Compile Include="Assets\Scripts\Week1\MyTransform.cs" />
+    <Compile Include="Assets\ThirdParty\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\TERRAIN\Shaders\suimono2_demo_flora_double.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\ThirdParty\TerrainSampleAssets\ThirdPartyNotices.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoDistanceBlur_orig.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_FX_WakeMask.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Deep Dark Ocean.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_FX_Fog.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
     <None Include="Assets\ThirdParty\StylizedWorld\Locations\ReadMeStylizedParkProps.txt" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoFunctionLibrary.cginc" />
     <None Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\FadeOut.shader" />
+    <None Include="Assets\ThirdParty\MeshBaker\Resources\Shaders\AlbedoShader.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_Suimono2.1_ReadMe.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_depthmask.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
+    <None Include="Assets\ThirdParty\MeshBaker\Release Notes.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Buoyancy Scene Preset.txt" />
     <None Include="Assets\Scripts\Week1\README.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Demo River Example.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Mirror Reflection.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_particleAlpha.shader" />
+    <None Include="Assets\ThirdParty\MeshBaker\Resources\Shaders\UnlitWithAlpha.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_particleAlphaOverlay.shader" />
+    <None Include="Assets\ThirdParty\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Custom\SUIMONO_PRESET_CustomTest.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoDepthMask.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Hot Spring Murky.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_FX_Depth.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_depthmask2.shader" />
     <None Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Anywhere Door\ScreenCutoutShader.shader" />
+    <None Include="Assets\ThirdParty\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Custom\SUIMONO_PRESET_Custom Example 1.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoDepth.shader" />
     <None Include="Assets\Scripts\Week2\README.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Blue Ocean with Waves.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Lava Flow.txt" />
+    <None Include="Assets\ThirdParty\MeshBaker\Resources\Shaders\NormalMapShaderSwizzle.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Audio\Voice\unity-chan_voice_list.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_effect_reflect.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Cartoon.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Oil Slick.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_surface.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_FX_NormalBlend.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Mud Thick Brown.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoUnderwaterFog.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Swimming Pool.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_effect_splash.shader" />
+    <None Include="Assets\ThirdParty\MeshBaker\MeshBakerWorkingFolder\DONT_DELETE.txt" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\OBJECTS\Shaders\Suimono2_Demo_HairSpec.shader" />
+    <None Include="Assets\ThirdParty\MeshBaker\README.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Calm Refraction Only.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\OBJECTS\Shaders\Reflect-BumpSpec.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_surface_scale.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Calm Carribean Blue.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\RESOURCES\SUIMONO_PRESETS_Built-In Presets\SUIMONO_PRESET_Calm Clear.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_clearfx.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\OBJECTS\Shaders\Suimono2_Demo_Skin.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\OBJECTS\Shaders\Suimono2_ReflectBumpSpecDouble.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\Stage\Shader\AlphaMask.shader" />
     <None Include="Assets\ThirdParty\SkySeries Freebie\Hdri setup.txt" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_FX_ShorelineObject.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoDistanceBlur.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_surface_under.shader" />
     <None Include="Assets\ThirdParty\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
+    <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\TERRAIN\Shaders\suimono2_demo_flora_single.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -802,6 +890,9 @@
     <Reference Include="Unity.ScriptableBuildPipeline">
       <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
     </Reference>
+    <Reference Include="Whinarn.UnityMeshSimplifier.Editor">
+      <HintPath>Library\ScriptAssemblies\Whinarn.UnityMeshSimplifier.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
     </Reference>
@@ -901,6 +992,9 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Whinarn.UnityMeshSimplifier.Runtime">
+      <HintPath>Library\ScriptAssemblies\Whinarn.UnityMeshSimplifier.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -996,6 +1090,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="MeshBakerExamples.csproj">
+      <Project>{EE6A393F-67D9-EFF9-7721-BC5F683DC8AC}</Project>
+      <Name>MeshBakerExamples</Name>
+    </ProjectReference>
     <ProjectReference Include="DrawingPackageToolsEditor.csproj">
       <Project>{38E6DBE1-92AE-7717-CA2F-2C1D27123431}</Project>
       <Name>DrawingPackageToolsEditor</Name>
@@ -1015,6 +1113,14 @@
     <ProjectReference Include="PackageTools.csproj">
       <Project>{A5EF3619-90AC-42E3-6EF6-113AEA122119}</Project>
       <Name>PackageTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshBakerCore.csproj">
+      <Project>{805B47FB-1646-2F80-3EE2-F4D106BB5D87}</Project>
+      <Name>MeshBakerCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshBakerEditor.csproj">
+      <Project>{0A51F05D-CF56-DD99-C8FD-DFC3669D4C1E}</Project>
+      <Name>MeshBakerEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AimingRig.csproj">
       <Project>{EE439B76-75BC-6A51-A892-A77BA23B6737}</Project>

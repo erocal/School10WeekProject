@@ -71,9 +71,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Editor\CreateLocatorHere.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\EDITOR\suimono_modulefx_editor.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\EDITOR\suimono_objectfx_editor.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\EDITOR\suimono_object_editor.cs" />
+    <Compile Include="Assets\ThirdParty\MeshCombiner\Editor\MeshCombinerEditor.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Editor\ExposeProperties\ExposeProperties.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Editor\Actions\ActionDrawer.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\EDITOR\suimono_module_editor.cs" />
+    <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\EDITOR\suimono_shorelineobject_editor.cs" />
     <Compile Include="Assets\Editor\PrefabPainterWindow.cs" />
+    <Compile Include="Assets\ThirdParty\LowPolyWater_Pack\Scripts\Editor\GeneratePlane.cs" />
     <Compile Include="Assets\ThirdParty\VRInteractions\Examples\Shared\Editor\ExposeProperties\ExposableMonobehaviorEditor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -788,6 +795,9 @@
     <Reference Include="Unity.ScriptableBuildPipeline">
       <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
     </Reference>
+    <Reference Include="Whinarn.UnityMeshSimplifier.Editor">
+      <HintPath>Library\ScriptAssemblies\Whinarn.UnityMeshSimplifier.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Entities">
       <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
     </Reference>
@@ -886,6 +896,9 @@
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Whinarn.UnityMeshSimplifier.Runtime">
+      <HintPath>Library\ScriptAssemblies\Whinarn.UnityMeshSimplifier.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -986,6 +999,10 @@
       <Project>{6CEDEACD-C748-6C84-7D82-330E49D56E6B}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="MeshBakerExamples.csproj">
+      <Project>{EE6A393F-67D9-EFF9-7721-BC5F683DC8AC}</Project>
+      <Name>MeshBakerExamples</Name>
+    </ProjectReference>
     <ProjectReference Include="DrawingPackageToolsEditor.csproj">
       <Project>{38E6DBE1-92AE-7717-CA2F-2C1D27123431}</Project>
       <Name>DrawingPackageToolsEditor</Name>
@@ -1005,6 +1022,14 @@
     <ProjectReference Include="PackageTools.csproj">
       <Project>{A5EF3619-90AC-42E3-6EF6-113AEA122119}</Project>
       <Name>PackageTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshBakerCore.csproj">
+      <Project>{805B47FB-1646-2F80-3EE2-F4D106BB5D87}</Project>
+      <Name>MeshBakerCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="MeshBakerEditor.csproj">
+      <Project>{0A51F05D-CF56-DD99-C8FD-DFC3669D4C1E}</Project>
+      <Name>MeshBakerEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AimingRig.csproj">
       <Project>{EE439B76-75BC-6A51-A892-A77BA23B6737}</Project>
