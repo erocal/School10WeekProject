@@ -70827,7 +70827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090627885008266209}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05744882, y: -0.000000017063234, z: -0.0000000022148607, w: 0.99834853}
+  m_LocalRotation: {x: 0.057448827, y: -0.000000017063234, z: -0.0000000022148605, w: 0.99834853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71202,6 +71202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meshy_AI_A_stylish_metropolita_0420130234_texture
       objectReference: {fileID: 0}
+    - target: {fileID: 8086678340177375580, guid: b7f516ccebe432c498c00695c6433e66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71467,7 +71471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4902857062704098795}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24549721, y: -0.000000019200984, z: 0.0000000011817873, w: 0.9693973}
+  m_LocalRotation: {x: 0.24549721, y: 0.000000019200984, z: -0.0000000011817873, w: 0.9693973}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71526,6 +71530,10 @@ PrefabInstance:
     - target: {fileID: 8844260953861758997, guid: 8d9d1ed531f78eb4180f9ae5e60e4c88, type: 3}
       propertyPath: m_Name
       value: Meshy_AI_A_modern_circular_met_0420124920_texture
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844260953861758997, guid: 8d9d1ed531f78eb4180f9ae5e60e4c88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -79100,6 +79108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meshy_AI_A_unique_contemporary_0420123820_texture
       objectReference: {fileID: 0}
+    - target: {fileID: 1610900944203936727, guid: cc58c77457f11164ea4bd932f698cbd8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3657884016165343823, guid: cc58c77457f11164ea4bd932f698cbd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 765.5
@@ -79210,6 +79222,10 @@ PrefabInstance:
     - target: {fileID: 3990465678457425394, guid: 374d80f6508743248ab88176b6d13cc6, type: 3}
       propertyPath: m_Name
       value: Meshy_AI_A_unique_contemporary_0420121553_texture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990465678457425394, guid: 374d80f6508743248ab88176b6d13cc6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6034049527871212783, guid: 374d80f6508743248ab88176b6d13cc6, type: 3}
       propertyPath: m_LocalPosition.x

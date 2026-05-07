@@ -89,6 +89,7 @@
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\ui_suimonoFps.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetTargetController.cs" />
+    <Compile Include="Assets\Scripts\Week6\CCMovement.cs" />
     <Compile Include="Assets\Scripts\Week1\PlayerInfo.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_InputController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\SpringCollider.cs" />
