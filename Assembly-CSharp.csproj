@@ -100,6 +100,7 @@
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\PlayerMovePhysics.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerMaster.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\InvokeEventFromInspector.cs" />
+    <Compile Include="Assets\Scripts\Project4\InfiniteTerrainGenerator.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Trigger volumes\GenericTrigger.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\GUI\guiFPS.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Models\UnityCharacter\Scripts\CharacterMovement2D.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\SpringManager.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_soundModule.cs" />
+    <Compile Include="Assets\Scripts\Project4\UAVCameraRelativeController.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerLookAt.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_animBoat.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\2D\MouseScrollZoom2D.cs" />

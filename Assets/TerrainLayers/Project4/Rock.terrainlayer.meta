@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ae759b74e5edbc245bc632025b10b547
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298911
+  packageName: 'Time Ghost: Environment'
+  packageVersion: 1.0
+  assetPath: Assets/Art/Terrain/sj_terrain_materials/TL_ast_rubble_ground_01.terrainlayer
+  uploadId: 700993

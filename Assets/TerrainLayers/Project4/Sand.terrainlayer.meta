@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 79e0cbd0a085f3244b1e278165e63bcd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298911
+  packageName: 'Time Ghost: Environment'
+  packageVersion: 1.0
+  assetPath: Assets/Art/Terrain/sj_terrain_materials/TL_Burnt_Sand_01.terrainlayer
+  uploadId: 700993
