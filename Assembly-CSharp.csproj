@@ -101,6 +101,7 @@
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\SCRIPTS\sui_demo_ControllerMaster.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\InvokeEventFromInspector.cs" />
     <Compile Include="Assets\Scripts\Project4\InfiniteTerrainGenerator.cs" />
+    <Compile Include="Assets\Scripts\Week8\EnemySpawner.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Trigger volumes\GenericTrigger.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\GUI\guiFPS.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\2D\MouseScrollZoom2D.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\CameraMagnets\CameraMagnetProperty.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\Scripting\ScriptingExample.cs" />
+    <Compile Include="Assets\Scripts\Week8\Enemy.cs" />
     <Compile Include="Assets\ThirdParty\MeshCombiner\Scripts\MeshCombiner.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\fx_causticObject.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Scenes\BossCamera\CustomLockCameraY.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
     <Compile Include="Assets\ThirdParty\Cinemachine\2.9.7\Cinemachine Example Scenes\Shared\Scripts\PlayerMoveOnSphere.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\RandomWind.cs" />
+    <Compile Include="Assets\Scripts\Week8\EnemyPool.cs" />
     <Compile Include="Assets\Scripts\Project3\CameraFSM.cs" />
     <Compile Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SCRIPTS\utility_EventTrigger.cs" />
     <Compile Include="Assets\Scripts\Week3\ButtonPushLeft.cs" />
@@ -237,6 +240,7 @@
     <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\SuimonoDistanceBlur.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
     <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\SHADERS\Suimono2_surface_under.shader" />
+    <None Include="Assets\ThirdParty\Hovl Studio\Magic effects pack\Demo scene\Readme.txt" />
     <None Include="Assets\ThirdParty\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
     <None Include="Assets\ThirdParty\SUIMONO - WATER SYSTEM 2\_DEMO\TERRAIN\Shaders\suimono2_demo_flora_single.shader" />
     <None Include="Assets\unity-chan!\Unity-chan! Model\Art\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />

@@ -10,7 +10,13 @@ public class EnemySensor : MonoBehaviour
     private bool wasInside = false;
     private void Update()
     {
-        if (player == null) return;
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+            if (player == null)
+                return;
+        }
+
         float dist = Vector3.Distance(transform.position, player.position);
         bool inside = dist <= detectionRadius;
         if (inside && !wasInside) Debug.Log($"{this.name}: Player entered");

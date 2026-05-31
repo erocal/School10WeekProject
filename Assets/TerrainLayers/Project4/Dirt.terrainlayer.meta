@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7bdc9ff4d0c4c7745bcbb89af379dbc5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298911
+  packageName: 'Time Ghost: Environment'
+  packageVersion: 1.0
+  assetPath: Assets/Art/Terrain/sj_terrain_materials/TL_YK_Rock_Dirt_2x2_02.terrainlayer
+  uploadId: 700993

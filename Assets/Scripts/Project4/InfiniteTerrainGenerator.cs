@@ -1,20 +1,23 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class InfiniteTerrainGenerator : MonoBehaviour
 {
-
-    #region -- ³]©w --
+    #region -- è¨­å®š --
 
     [Header("References")]
     public Transform player;
-
-    // ¶¶§Ç¡G0=²Ä¤@¼h(³Ì§C), 1=²Ä¤G¼h, 2=²Ä¤T¼h, 3=²Ä¥|¼h(§t°~©Y), 4=²Ä¤­¼h(³Ì°ª)
     public TerrainLayer[] terrainLayers;
+
+    [Header("Water Settings")]
+    public GameObject waterPrefab;
+    public bool waterFollowPlayer = true;        // æ°´é¢æ˜¯å¦è·Ÿéš¨ Player çš„ XZ ä½ç½®
+    public float fixedWaterY = 0f;               // æ°´é¢å›ºå®šé«˜åº¦,ä¸æœƒè·Ÿè‘— Player çš„ Y æ”¹è®Š
+    public Vector3 waterScale = Vector3.one;     // æ°´é¢ç”Ÿæˆæ™‚çš„ç¸®æ”¾å€ç‡
 
     [Header("Chunk Settings")]
     public int chunkSize = 256;
-    public int heightmapResolution = 257; // ¥²¶·¬O 2^n + 1
+    public int heightmapResolution = 257;        // å¿…é ˆæ˜¯ 2^n + 1
     public float maxHeight = 80f;
     public int viewDistanceInChunks = 2;
 
@@ -31,6 +34,20 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     public float lacunarity = 2f;
     public float heightPower = 1f;
 
+    [Header("Rugged Rock Terrain")]
+    public bool enableRuggedTerrain = true;
+    [Range(0f, 1f)] public float ruggedStrength = 0.65f;     // å²©çŸ³å¶™å³‹å¼·åº¦,è¶Šé«˜è¶Šç ´ç¢
+    public float ridgeNoiseScale = 0.012f;                   // å±±è„Šç´°ç¯€æ¯”ä¾‹
+    public int ridgeOctaves = 5;
+    public float ridgePersistence = 0.55f;
+    public float ridgeLacunarity = 2.25f;
+    public float warpScale = 0.004f;                         // æ‰­æ›²åæ¨™,é¿å…åœ°å½¢å¤ªè¦å‰‡
+    public float warpStrength = 85f;
+    public bool enableRockTerraces = true;                   // å²©å±¤éšæ¢¯æ•ˆæœ
+    public int terraceSteps = 18;
+    [Range(0f, 1f)] public float terraceStrength = 0.45f;
+    [Range(0.5f, 4f)] public float cliffSharpness = 1.8f;    // è®“å²©å£æ›´éŠ³åˆ©
+
     [Header("Texture Blend Weights")]
     public float layer0Weight = 0.30f;
     public float layer1Weight = 0.20f;
@@ -40,24 +57,25 @@ public class InfiniteTerrainGenerator : MonoBehaviour
 
     [Header("Texture Noise Blend")]
     public bool enableTextureNoiseBlend = true;
+    public float textureMacroNoiseScale = 0.006f;            // å¤§å°ºåº¦è®ŠåŒ–:æ§åˆ¶å¤§ç‰‡å€åŸŸåå‘å“ªç¨®æè³ª
+    public float textureDetailNoiseScale = 0.045f;           // å°å°ºåº¦è®ŠåŒ–:è£½é€ å±€éƒ¨æ–‘é§ã€ç ´ç¢æ„Ÿ
+    [Range(0f, 3f)] public float textureNoiseStrength = 1.8f;
+    [Range(0f, 3f)] public float textureDetailStrength = 1.2f;
+    [Range(0.25f, 4f)] public float textureContrast = 2.2f;  // æ¬Šé‡éŠ³åˆ©åº¦,è¶Šé«˜è¶Šæœƒè®“æŸäº› Layer å±€éƒ¨è®Šæ˜é¡¯
 
-    // ¤j¤Ø«×ÅÜ¤Æ¡G±±¨î¤j¤ù°Ï°ì°¾¦V­şºØ§÷½è
-    public float textureMacroNoiseScale = 0.006f;
-
-    // ¤p¤Ø«×ÅÜ¤Æ¡G»s³y§½³¡´³»é¡B¯}¸H·P
-    public float textureDetailNoiseScale = 0.045f;
-
-    // ÂZ°Ê±j«×¡A¶V¤j¶V¤£§¡¤Ã
-    [Range(0f, 3f)]
-    public float textureNoiseStrength = 1.8f;
-
-    // ²Ó¸`ÂZ°Ê±j«×
-    [Range(0f, 3f)]
-    public float textureDetailStrength = 1.2f;
-
-    // Åv­«¾U§Q«×¡A¶V°ª¶V®e©öÅı¬Y¨Ç Layer §½³¡ÅÜ©úÅã
-    [Range(0.25f, 4f)]
-    public float textureContrast = 2.2f;
+    [Header("Tree Generation")]
+    public bool enableTrees = true;
+    public GameObject[] treePrefabs;                         // æ”¾å…¥æ¨¹æœ¨ Prefab,ä¾‹å¦‚ Pineã€DeadTreeã€Cactus ç­‰
+    public int treeAttemptsPerChunk = 250;                   // æ¯å€‹ Chunk å˜—è©¦ç”Ÿæˆå¹¾æ¬¡æ¨¹
+    [Range(0f, 1f)] public float treeSpawnChance = 0.18f;    // ç”Ÿæˆæ©Ÿç‡,æ•¸å€¼è¶Šé«˜æ¨¹è¶Šå¯†
+    public float minTreeHeight = 5f;                         // æ¨¹æœ¨å¯å‡ºç¾çš„é«˜åº¦ç¯„åœ (ä½¿ç”¨ä¸–ç•Œé«˜åº¦)
+    public float maxTreeHeightForTrees = 380f;
+    [Range(0f, 90f)] public float maxTreeSlope = 28f;        // é¿å…æ¨¹é•·åœ¨å¤ªé™¡çš„æ–œå¡ä¸Š
+    public float minTreeScale = 0.8f;                        // æ¨¹æœ¨å¤§å°éš¨æ©Ÿç¯„åœ
+    public float maxTreeScale = 1.6f;
+    public float treeNoiseScale = 0.008f;                    // æ¨¹æœ¨åˆ†å¸ƒ Noise,è®“æ¨¹æ—æˆç‰‡å‡ºç¾,ä¸è¦å¹³å‡æ’’æ»¿
+    [Range(0f, 1f)] public float treeNoiseThreshold = 0.45f;
+    public float minDistanceFromWaterHeight = 2f;            // é¿å…æ¨¹é•·åœ¨å³½è°·è°·åº•æˆ–æ°´åº•é™„è¿‘
 
     [Header("Startup")]
     public bool snapPlayerToTerrainOnStart = true;
@@ -65,60 +83,40 @@ public class InfiniteTerrainGenerator : MonoBehaviour
 
     [Header("Diagonal Canyon Settings")]
     public bool enableDiagonalCanyon = true;
-
-    // ³q¹L­ìÂIªº¹ï¨¤½u¤è¦V¡C
-    // (1, 1) ¥Nªí®l¨¦ªuµÛ Z = X ªº¤è¦V³q¹L­ìÂI¡C
-    // (1, -1) «h¥NªíªuµÛ Z = -X¡C
+    // é€šéåŸé»çš„å°è§’ç·šæ–¹å‘ã€‚(1, 1) ä»£è¡¨å³½è°·æ²¿è‘— Z = X æ–¹å‘é€šéåŸé»ã€‚(1, -1) å‰‡ä»£è¡¨æ²¿è‘— Z = -Xã€‚
     public Vector2 diagonalCanyonDirection = new Vector2(1f, 1f);
-
-    // ¨¦©³¡u¥­©Z°Ï¡vªº§¹¾ã¼e«×¡C
-    // »İ¨D¬O¦Ü¤Ö 100¡C
-    public float canyonFlatBottomWidth = 100f;
-
-    // ®l¨¦¨â°¼±×©Y¹L´ç¼e«×¡C
-    // ¶V¤j¥Nªí®l¨¦¶V¼e¡BÃä©Y¶V¥­½w¡C
-    public float canyonSideSlopeWidth = 180f;
-
-    // ®l¨¦©³³¡°ª«×¡A³o¸Ì³]¬° 0¡C
-    [Range(0f, 1f)]
-    public float canyonBottomHeight01 = 0f;
-
-    // ®l¨¦¤Á³Î±j«×¡C
-    // 1 ¥Nªí§¹¥ş¤Á¨ì canyonBottomHeight01¡C
-    [Range(0f, 1f)]
-    public float canyonCarveStrength = 1f;
+    public float canyonFlatBottomWidth = 100f;               // è°·åº•ã€Œå¹³å¦å€ã€çš„å®Œæ•´å¯¬åº¦,å»ºè­°è‡³å°‘ 100
+    public float canyonSideSlopeWidth = 180f;                // å³½è°·å…©å´æ–œå¡éæ¸¡å¯¬åº¦,è¶Šå¤§ä»£è¡¨å³½è°·è¶Šå¯¬ã€é‚Šå¡è¶Šå¹³ç·©
+    [Range(0f, 1f)] public float canyonBottomHeight01 = 0f;  // å³½è°·åº•éƒ¨é«˜åº¦,é€™è£¡è¨­ç‚º 0
+    [Range(0f, 1f)] public float canyonCarveStrength = 1f;   // å³½è°·åˆ‡å‰²å¼·åº¦,1 ä»£è¡¨å®Œå…¨åˆ‡åˆ° canyonBottomHeight01
 
     [Header("Plateau / Height Clamp Settings")]
     public bool enableHeightClamp = true;
-
-    // ¶W¹L³o­Ó¥@¬É°ª«×´N·|³Q¤Á¥­¡C
-    // ¨Ò¦p maxHeight = 800¡AclampHeight = 400¡A¥Nªí°ª©ó 400 ªº¦a§Î³£·|ÅÜ¦¨ 400¡C
+    // è¶…éé€™å€‹ä¸–ç•Œé«˜åº¦å°±æœƒè¢«åˆ‡å¹³ã€‚ä¾‹å¦‚ maxHeight = 800, clampHeight = 400,ä»£è¡¨é«˜æ–¼ 400 çš„åœ°å½¢éƒ½æœƒè®Šæˆ 400ã€‚
     public float clampHeight = 400f;
-
-    // ¬O§_ÅıºI¥­Ãä½tµy·L¥­·Æ¡C
-    // false = µw¤Á¥­¡A¤s³»·|«Ü©úÅã³Q«d±¼¡C
-    // true = ±µªñ clampHeight ®ÉºCºCÀ£¥­¡C
+    // false = ç¡¬åˆ‡å¹³,å±±é ‚æœƒå¾ˆæ˜é¡¯è¢«ç æ‰;true = æ¥è¿‘ clampHeight æ™‚æ…¢æ…¢å£“å¹³ã€‚
     public bool smoothClampEdge = false;
-
-    // ¥­·Æ¹L´ç½d³ò¡A¥u¦³ smoothClampEdge = true ®É¦³®Ä¡C
-    // ¨Ò¦p 30 ¥Nªí 370~400 ¤§¶¡³vº¥À£¥­¡C
-    public float clampSmoothRange = 30f;
+    public float clampSmoothRange = 30f;                     // å¹³æ»‘éæ¸¡ç¯„åœ,åªæœ‰ smoothClampEdge = true æ™‚æœ‰æ•ˆ
 
     #endregion
 
-    // Active chunks
-    private Dictionary<Vector2Int, Terrain> chunks = new Dictionary<Vector2Int, Terrain>();
+    // ---- Runtime ----
+    private Transform waterInstance;
 
+    // Active chunks
+    private readonly Dictionary<Vector2Int, Terrain> chunks = new Dictionary<Vector2Int, Terrain>();
     // Inactive pooled terrains
-    private Queue<Terrain> chunkPool = new Queue<Terrain>();
+    private readonly Queue<Terrain> chunkPool = new Queue<Terrain>();
+    // é‡è¤‡ä½¿ç”¨çš„æš«å­˜é›†åˆ,é¿å…æ¯å¹€ GC
+    private readonly HashSet<Vector2Int> neededBuffer = new HashSet<Vector2Int>();
+    private readonly List<Vector2Int> recycleBuffer = new List<Vector2Int>();
 
     private Vector2Int lastPlayerChunk;
-
-    // Seed offsets
     private float seedOffsetX;
     private float seedOffsetZ;
-
     private int pooledChunkIndex = 0;
+
+    // ---------- Unity Callbacks ----------
 
     void Start()
     {
@@ -129,21 +127,18 @@ public class InfiniteTerrainGenerator : MonoBehaviour
             return;
         }
 
-        if (chunkParent == null)
-        {
-            GameObject parentObj = new GameObject("TerrainChunkPool");
-            chunkParent = parentObj.transform;
-        }
+        CreateWaterIfNeeded();
 
-        System.Random rng = new System.Random(seed);
+        if (chunkParent == null)
+            chunkParent = new GameObject("TerrainChunkPool").transform;
+
+        var rng = new System.Random(seed);
         seedOffsetX = (float)(rng.NextDouble() * 10000.0);
         seedOffsetZ = (float)(rng.NextDouble() * 10000.0);
 
         if (prewarmPoolOnStart)
         {
-            int visibleChunkCount = GetVisibleChunkCount();
-            int poolCount = visibleChunkCount + Mathf.Max(0, extraPooledChunks);
-
+            int poolCount = GetVisibleChunkCount() + Mathf.Max(0, extraPooledChunks);
             PrewarmPool(poolCount);
         }
 
@@ -162,13 +157,35 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     {
         if (player == null) return;
 
-        Vector2Int currentChunk = GetPlayerChunkCoord();
+        UpdateWaterFollow();
 
+        Vector2Int currentChunk = GetPlayerChunkCoord();
         if (currentChunk != lastPlayerChunk)
         {
             lastPlayerChunk = currentChunk;
             UpdateChunks();
         }
+    }
+
+    // ---------- Water ----------
+
+    void CreateWaterIfNeeded()
+    {
+        if (waterPrefab == null || waterInstance != null) return;
+
+        Vector3 spawnPosition = new Vector3(player.position.x, fixedWaterY, player.position.z);
+        GameObject waterObj = Instantiate(waterPrefab, spawnPosition, Quaternion.identity);
+        waterObj.name = "Following_Water";
+        waterObj.transform.localScale = waterScale;
+        waterInstance = waterObj.transform;
+    }
+
+    void UpdateWaterFollow()
+    {
+        if (!waterFollowPlayer || waterInstance == null) return;
+
+        Vector3 p = player.position;
+        waterInstance.position = new Vector3(p.x, fixedWaterY, p.z);
     }
 
     // ---------- Pool Management ----------
@@ -182,10 +199,7 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     void PrewarmPool(int count)
     {
         for (int i = 0; i < count; i++)
-        {
-            Terrain terrain = CreatePooledTerrain();
-            ReturnChunkToPool(terrain);
-        }
+            ReturnChunkToPool(CreatePooledTerrain());
     }
 
     Terrain CreatePooledTerrain()
@@ -199,39 +213,48 @@ public class InfiniteTerrainGenerator : MonoBehaviour
         Terrain terrain = go.GetComponent<Terrain>();
         terrain.drawInstanced = true;
 
-        TerrainCollider collider = go.GetComponent<TerrainCollider>();
-        if (collider != null)
-            collider.terrainData = data;
+        TerrainCollider tc = go.GetComponent<TerrainCollider>();
+        if (tc != null) tc.terrainData = data;
 
         go.SetActive(false);
-
         return terrain;
     }
 
     TerrainData CreateTerrainData()
     {
-        TerrainData data = new TerrainData();
-
-        data.heightmapResolution = heightmapResolution;
-        data.size = new Vector3(chunkSize, maxHeight, chunkSize);
-        data.alphamapResolution = Mathf.Clamp(heightmapResolution, 64, 512);
+        TerrainData data = new TerrainData
+        {
+            heightmapResolution = heightmapResolution,
+            size = new Vector3(chunkSize, maxHeight, chunkSize),
+            alphamapResolution = Mathf.Clamp(heightmapResolution, 64, 512)
+        };
 
         if (terrainLayers != null && terrainLayers.Length > 0)
             data.terrainLayers = terrainLayers;
 
+        SetupTreePrototypes(data);
         return data;
     }
 
-    Terrain GetChunkFromPool()
+    void SetupTreePrototypes(TerrainData data)
     {
-        if (chunkPool.Count > 0)
+        if (treePrefabs == null || treePrefabs.Length == 0) return;
+
+        var prototypes = new TreePrototype[treePrefabs.Length];
+        for (int i = 0; i < treePrefabs.Length; i++)
         {
-            return chunkPool.Dequeue();
+            prototypes[i] = new TreePrototype { prefab = treePrefabs[i], bendFactor = 0.2f };
         }
 
-        // ­Yª±®a²¾°Ê¤Ó§Ö©Î viewDistance ³Q½Õ¤j¡A¦À¤£°÷®É¤~¸É¤@­Ó¡C
-        // ³o¤£¬O¨C¦¸²¾°Ê³£¥Í¦¨¡A¦Ó¬O¦À®e¶q¤£¨¬®É¤~ÂX¥R¡C
-        return CreatePooledTerrain();
+        data.treePrototypes = prototypes;
+        data.RefreshPrototypes();
+    }
+
+    // è‹¥ç©å®¶ç§»å‹•å¤ªå¿«æˆ– viewDistance è¢«èª¿å¤§,æ± ä¸å¤ æ™‚æ‰è£œä¸€å€‹ã€‚
+    // ä¸æ˜¯æ¯æ¬¡ç§»å‹•éƒ½ç”Ÿæˆ,è€Œæ˜¯æ± å®¹é‡ä¸è¶³æ™‚æ‰æ“´å……ã€‚
+    Terrain GetChunkFromPool()
+    {
+        return chunkPool.Count > 0 ? chunkPool.Dequeue() : CreatePooledTerrain();
     }
 
     void ReturnChunkToPool(Terrain terrain)
@@ -241,7 +264,6 @@ public class InfiniteTerrainGenerator : MonoBehaviour
         terrain.gameObject.SetActive(false);
         terrain.transform.position = Vector3.zero;
         terrain.transform.SetParent(chunkParent);
-
         chunkPool.Enqueue(terrain);
     }
 
@@ -250,47 +272,40 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     Vector2Int GetPlayerChunkCoord()
     {
         Vector3 p = player.position;
-
-        int cx = Mathf.FloorToInt(p.x / chunkSize);
-        int cz = Mathf.FloorToInt(p.z / chunkSize);
-
-        return new Vector2Int(cx, cz);
+        return new Vector2Int(
+            Mathf.FloorToInt(p.x / chunkSize),
+            Mathf.FloorToInt(p.z / chunkSize));
     }
 
     void UpdateChunks()
     {
         Vector2Int center = lastPlayerChunk;
 
-        HashSet<Vector2Int> needed = new HashSet<Vector2Int>();
-
+        neededBuffer.Clear();
         for (int dz = -viewDistanceInChunks; dz <= viewDistanceInChunks; dz++)
         {
             for (int dx = -viewDistanceInChunks; dx <= viewDistanceInChunks; dx++)
-            {
-                needed.Add(new Vector2Int(center.x + dx, center.y + dz));
-            }
+                neededBuffer.Add(new Vector2Int(center.x + dx, center.y + dz));
         }
 
-        foreach (Vector2Int coord in needed)
+        foreach (Vector2Int coord in neededBuffer)
         {
             if (!chunks.ContainsKey(coord))
                 ActivateChunk(coord);
         }
 
-        List<Vector2Int> toRecycle = new List<Vector2Int>();
-
+        recycleBuffer.Clear();
         foreach (var kv in chunks)
         {
-            if (!needed.Contains(kv.Key))
-                toRecycle.Add(kv.Key);
+            if (!neededBuffer.Contains(kv.Key))
+                recycleBuffer.Add(kv.Key);
         }
 
-        foreach (Vector2Int coord in toRecycle)
+        for (int i = 0; i < recycleBuffer.Count; i++)
         {
+            Vector2Int coord = recycleBuffer[i];
             Terrain terrain = chunks[coord];
-
             chunks.Remove(coord);
-
             ReturnChunkToPool(terrain);
         }
     }
@@ -303,18 +318,16 @@ public class InfiniteTerrainGenerator : MonoBehaviour
         terrain.transform.position = new Vector3(coord.x * chunkSize, 0f, coord.y * chunkSize);
 
         TerrainData data = terrain.terrainData;
-
         EnsureTerrainDataSettings(data);
 
         GenerateHeights(data, coord);
         ApplyTextures(data, coord);
+        GenerateTrees(data, coord);
 
-        TerrainCollider collider = terrain.GetComponent<TerrainCollider>();
-        if (collider != null)
-            collider.terrainData = data;
+        TerrainCollider tc = terrain.GetComponent<TerrainCollider>();
+        if (tc != null) tc.terrainData = data;
 
         terrain.gameObject.SetActive(true);
-
         chunks[coord] = terrain;
     }
 
@@ -338,16 +351,13 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     {
         Vector2Int c = GetPlayerChunkCoord();
 
-        if (!chunks.TryGetValue(c, out Terrain terrain) || terrain == null)
-            return;
+        if (!chunks.TryGetValue(c, out Terrain terrain) || terrain == null) return;
 
         Vector3 p = player.position;
         float groundY = terrain.SampleHeight(p) + terrain.transform.position.y;
 
         CharacterController cc = player.GetComponent<CharacterController>();
-
         bool reEnable = false;
-
         if (cc != null && cc.enabled)
         {
             cc.enabled = false;
@@ -356,8 +366,7 @@ public class InfiniteTerrainGenerator : MonoBehaviour
 
         player.position = new Vector3(p.x, groundY + playerSpawnYOffset, p.z);
 
-        if (reEnable && cc != null)
-            cc.enabled = true;
+        if (reEnable && cc != null) cc.enabled = true;
     }
 
     // ---------- Height Generation ----------
@@ -365,18 +374,19 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     void GenerateHeights(TerrainData data, Vector2Int coord)
     {
         int res = data.heightmapResolution;
-
         float[,] heights = new float[res, res];
 
-        Vector2 origin = new Vector2(coord.x * chunkSize, coord.y * chunkSize);
+        float originX = coord.x * chunkSize;
+        float originZ = coord.y * chunkSize;
+        float invResMinus1 = 1f / (res - 1f);
+        float step = chunkSize * invResMinus1;
 
         for (int z = 0; z < res; z++)
         {
+            float wz = originZ + z * step;
             for (int x = 0; x < res; x++)
             {
-                float wx = origin.x + (x / (res - 1f)) * chunkSize;
-                float wz = origin.y + (z / (res - 1f)) * chunkSize;
-
+                float wx = originX + x * step;
                 heights[z, x] = SampleHeight01(wx, wz);
             }
         }
@@ -387,96 +397,133 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     float SampleHeight01(float worldX, float worldZ)
     {
         float h = FBM(worldX, worldZ, noiseScale, octaves, persistence, lacunarity);
-
         h = Mathf.Pow(h, Mathf.Max(0.01f, heightPower));
 
-        if (enableDiagonalCanyon)
-        {
-            h = ApplyDiagonalCanyon(h, worldX, worldZ);
-        }
-
-        if (enableHeightClamp)
-        {
-            h = ApplyHeightClamp(h);
-        }
+        if (enableRuggedTerrain) h = ApplyRuggedTerrain(h, worldX, worldZ);
+        if (enableDiagonalCanyon) h = ApplyDiagonalCanyon(h, worldX, worldZ);
+        if (enableHeightClamp) h = ApplyHeightClamp(h);
 
         return Mathf.Clamp01(h);
+    }
+
+    float ApplyRuggedTerrain(float baseHeight, float worldX, float worldZ)
+    {
+        // 1. Domain Warping:æ‰­æ›²å–æ¨£åº§æ¨™,è®“å²©çŸ³ä¸æœƒå¤ªè¦å‰‡
+        float warpX = (Mathf.PerlinNoise(
+            worldX * warpScale + seedOffsetX,
+            worldZ * warpScale + seedOffsetZ) - 0.5f) * 2f * warpStrength;
+
+        float warpZ = (Mathf.PerlinNoise(
+            worldX * warpScale + seedOffsetX + 91.7f,
+            worldZ * warpScale + seedOffsetZ + 43.3f) - 0.5f) * 2f * warpStrength;
+
+        float wx = worldX + warpX;
+        float wz = worldZ + warpZ;
+
+        // 2. Ridged Noise:ç”¢ç”Ÿå°–éŠ³è„Šç·šèˆ‡ç ´ç¢å²©å£
+        float ridge = RidgedFBM(wx, wz, ridgeNoiseScale, ridgeOctaves, ridgePersistence, ridgeLacunarity);
+
+        // 3. å¼·åŒ–é«˜é »ç ´ç¢æ„Ÿ
+        ridge = Mathf.Pow(ridge, cliffSharpness);
+
+        // 4. æŠŠåŸºç¤åœ°å½¢èˆ‡å²©çŸ³è„Šç·šæ··åˆ
+        float ruggedHeight = Mathf.Lerp(baseHeight, ridge, ruggedStrength);
+
+        // 5. å²©å±¤éšæ¢¯,åšå‡ºæ²‰ç©å²©ã€å³½è°·å²©å±¤æ¬¡
+        if (enableRockTerraces && terraceSteps > 1)
+            ruggedHeight = ApplyTerrace(ruggedHeight, terraceSteps, terraceStrength);
+
+        return Mathf.Clamp01(ruggedHeight);
+    }
+
+    float RidgedFBM(float worldX, float worldZ, float scale, int oct, float pers, float lac)
+    {
+        float amplitude = 1f;
+        float frequency = 1f;
+        float sum = 0f;
+        float norm = 0f;
+
+        for (int i = 0; i < oct; i++)
+        {
+            float nx = worldX * scale * frequency + seedOffsetX + i * 37.1f;
+            float nz = worldZ * scale * frequency + seedOffsetZ + i * 19.7f;
+
+            float n = Mathf.PerlinNoise(nx, nz);
+            // Perlin 0~1 è½‰æˆ ridged:0.5 é™„è¿‘ä½,æ¥è¿‘ 0 æˆ– 1 å½¢æˆé«˜è„Šç·š
+            n = 1f - Mathf.Abs(n * 2f - 1f);
+            // å†åè½‰ä¸€æ¬¡,è®“è„Šç·šæ›´çªå‡º
+            n = 1f - n;
+
+            sum += n * amplitude;
+            norm += amplitude;
+
+            amplitude *= pers;
+            frequency *= lac;
+        }
+
+        return sum / Mathf.Max(0.0001f, norm);
+    }
+
+    float ApplyTerrace(float height01, int steps, float strength)
+    {
+        float stepped = Mathf.Floor(height01 * steps) / steps;
+        // ä¿ç•™ä¸€é»åŸå§‹é«˜åº¦,é¿å…å®Œå…¨è®Šæˆ Minecraft å¼éšæ¢¯
+        return Mathf.Lerp(height01, stepped, strength);
     }
 
     float ApplyDiagonalCanyon(float baseHeight, float worldX, float worldZ)
     {
         Vector2 dir = diagonalCanyonDirection;
-
-        if (dir.sqrMagnitude < 0.0001f)
-            dir = new Vector2(1f, 1f);
-
+        if (dir.sqrMagnitude < 0.0001f) dir = new Vector2(1f, 1f);
         dir.Normalize();
 
-        // normal ¬O««ª½©ó®l¨¦¤è¦Vªº¦V¶q¡C
-        // ¥Î¥¦¥i¥H­pºâ¬Y¤@ÂI¨ì®l¨¦¤¤¤ß½uªº¶ZÂ÷¡C
+        // normal æ˜¯å‚ç›´æ–¼å³½è°·æ–¹å‘çš„å‘é‡,ç”¨å®ƒå¯ä»¥è¨ˆç®—æŸä¸€é»åˆ°å³½è°·ä¸­å¿ƒç·šçš„è·é›¢
         Vector2 normal = new Vector2(-dir.y, dir.x);
 
-        Vector2 p = new Vector2(worldX, worldZ);
-
-        // ¦]¬°¤¤¤ß½u³q¹L­ìÂI¡A©Ò¥H¤£»İ­n offset¡C
-        // distance ¶V¤p¡A¥Nªí¶V±µªñ®l¨¦¤¤¤ß½u¡C
-        float distanceToCenterLine = Mathf.Abs(Vector2.Dot(p, normal));
+        // å› ç‚ºä¸­å¿ƒç·šé€šéåŸé»,æ‰€ä»¥ä¸éœ€è¦ offsetã€‚distance è¶Šå°,ä»£è¡¨è¶Šæ¥è¿‘å³½è°·ä¸­å¿ƒç·šã€‚
+        float distanceToCenterLine = Mathf.Abs(worldX * normal.x + worldZ * normal.y);
 
         float halfFlatWidth = canyonFlatBottomWidth * 0.5f;
         float outerWidth = halfFlatWidth + canyonSideSlopeWidth;
 
-        // 1. ¨¦©³¥­©Z°Ï¡G°ª«×ª½±µ¤Á¨ì 0
+        // 1. è°·åº•å¹³å¦å€:é«˜åº¦ç›´æ¥åˆ‡åˆ° 0
         if (distanceToCenterLine <= halfFlatWidth)
-        {
             return canyonBottomHeight01;
-        }
 
-        // 2. ®l¨¦¥~°¼¡G¤£¨ü¼vÅT¡Aºû«ù­ì¦a§Î
+        // 2. å³½è°·å¤–å´:ä¸å—å½±éŸ¿,ç¶­æŒåŸåœ°å½¢
         if (distanceToCenterLine >= outerWidth)
-        {
             return baseHeight;
-        }
 
-        // 3. ®l¨¦Ãä©Y¡G±q 0 ¥­·Æ¹L´ç¨ì­ì¥»¦a§Î
+        // 3. å³½è°·é‚Šå¡:å¾ 0 å¹³æ»‘éæ¸¡åˆ°åŸæœ¬åœ°å½¢
         float t = Mathf.InverseLerp(halfFlatWidth, outerWidth, distanceToCenterLine);
-
-        // SmoothStep ÅıÃä©Y¹L´ç¤ñ¸û¦ÛµM¡A¤£·|¬O¥Íµwª½½u¡C
+        // SmoothStep è®“é‚Šå¡éæ¸¡æ¯”è¼ƒè‡ªç„¶,ä¸æœƒæ˜¯ç”Ÿç¡¬ç›´ç·š
         t = t * t * (3f - 2f * t);
 
         float canyonHeight = Mathf.Lerp(canyonBottomHeight01, baseHeight, t);
-
         return Mathf.Lerp(baseHeight, canyonHeight, canyonCarveStrength);
     }
 
     float ApplyHeightClamp(float height01)
     {
-        if (maxHeight <= 0f)
-            return height01;
+        if (maxHeight <= 0f) return height01;
 
         float clampHeight01 = Mathf.Clamp01(clampHeight / maxHeight);
 
         if (!smoothClampEdge)
-        {
             return Mathf.Min(height01, clampHeight01);
-        }
 
         float smoothRange01 = Mathf.Max(0.0001f, clampSmoothRange / maxHeight);
-
         float start01 = Mathf.Clamp01(clampHeight01 - smoothRange01);
         float end01 = clampHeight01;
 
-        // §C©ó¥­·Æ°Ï°ì¡G¤£³B²z
-        if (height01 <= start01)
-            return height01;
+        // ä½æ–¼å¹³æ»‘å€åŸŸ:ä¸è™•ç†
+        if (height01 <= start01) return height01;
+        // é«˜æ–¼åˆ‡å¹³é«˜åº¦:ç›´æ¥åˆ‡åˆ° clampHeight
+        if (height01 >= end01) return clampHeight01;
 
-        // °ª©óºI¥­°ª«×¡Gª½±µ¤Á¨ì clampHeight
-        if (height01 >= end01)
-            return clampHeight01;
-
-        // ¥­·Æ°Ï°ì¡G³vº¥À£¦V clampHeight
+        // å¹³æ»‘å€åŸŸ:é€æ¼¸å£“å‘ clampHeight
         float t = Mathf.InverseLerp(start01, end01, height01);
         t = t * t * (3f - 2f * t);
-
         return Mathf.Lerp(height01, clampHeight01, t);
     }
 
@@ -492,9 +539,7 @@ public class InfiniteTerrainGenerator : MonoBehaviour
             float nx = worldX * scale * frequency + seedOffsetX;
             float nz = worldZ * scale * frequency + seedOffsetZ;
 
-            float n = Mathf.PerlinNoise(nx, nz);
-
-            sum += n * amplitude;
+            sum += Mathf.PerlinNoise(nx, nz) * amplitude;
             norm += amplitude;
 
             amplitude *= pers;
@@ -508,45 +553,110 @@ public class InfiniteTerrainGenerator : MonoBehaviour
 
     void ApplyTextures(TerrainData data, Vector2Int coord)
     {
-        if (data.terrainLayers == null || data.terrainLayers.Length == 0)
-            return;
+        if (data.terrainLayers == null || data.terrainLayers.Length == 0) return;
 
         int aRes = data.alphamapResolution;
         int layerCount = data.terrainLayers.Length;
 
         float[,,] maps = new float[aRes, aRes, layerCount];
+        // å…§å±¤ buffer é‡è¤‡ä½¿ç”¨,ä¸è¦æ¯å€‹åƒç´ éƒ½ new
+        float[] weights = new float[layerCount];
+
+        float originX = coord.x * chunkSize;
+        float originZ = coord.y * chunkSize;
+        float invResMinus1 = 1f / (aRes - 1f);
+        float step = chunkSize * invResMinus1;
 
         for (int z = 0; z < aRes; z++)
         {
+            float worldZ = originZ + z * step;
             for (int x = 0; x < aRes; x++)
             {
-                float u = x / (aRes - 1f);
-                float v = z / (aRes - 1f);
-
-                float worldX = coord.x * chunkSize + u * chunkSize;
-                float worldZ = coord.y * chunkSize + v * chunkSize;
-
-                float[] weights = new float[layerCount];
+                float worldX = originX + x * step;
 
                 if (enableTextureNoiseBlend)
-                {
                     FillNoiseTextureWeights(weights, worldX, worldZ);
-                }
                 else
-                {
                     FillBaseTextureWeights(weights);
-                }
 
                 NormalizeWeights(weights);
 
                 for (int l = 0; l < layerCount; l++)
-                {
                     maps[z, x, l] = weights[l];
-                }
             }
         }
 
         data.SetAlphamaps(0, 0, maps);
+    }
+
+    void GenerateTrees(TerrainData data, Vector2Int coord)
+    {
+        if (!enableTrees || treePrefabs == null || treePrefabs.Length == 0)
+        {
+            data.treeInstances = new TreeInstance[0];
+            return;
+        }
+
+        if (data.treePrototypes == null || data.treePrototypes.Length == 0)
+            SetupTreePrototypes(data);
+
+        // é ä¼°å®¹é‡ (treeSpawnChance * treeNoise é€šéç‡ â‰ˆ ä¸€åŠå·¦å³),æ¸›å°‘ List æ“´å®¹
+        var trees = new List<TreeInstance>(Mathf.CeilToInt(treeAttemptsPerChunk * treeSpawnChance) + 8);
+        var rng = new System.Random(GetChunkSeed(coord, 9173));
+
+        float waterLimit = fixedWaterY + minDistanceFromWaterHeight;
+        int prototypeCount = data.treePrototypes.Length;
+
+        for (int i = 0; i < treeAttemptsPerChunk; i++)
+        {
+            float localX01 = (float)rng.NextDouble();
+            float localZ01 = (float)rng.NextDouble();
+
+            float worldX = coord.x * chunkSize + localX01 * chunkSize;
+            float worldZ = coord.y * chunkSize + localZ01 * chunkSize;
+
+            float noise = Mathf.PerlinNoise(
+                worldX * treeNoiseScale + seedOffsetX,
+                worldZ * treeNoiseScale + seedOffsetZ);
+            if (noise < treeNoiseThreshold) continue;
+
+            if ((float)rng.NextDouble() > treeSpawnChance) continue;
+
+            float height01 = SampleHeight01(worldX, worldZ);
+            float worldHeight = height01 * maxHeight;
+            if (worldHeight < minTreeHeight || worldHeight > maxTreeHeightForTrees) continue;
+            if (worldHeight <= waterLimit) continue;
+
+            float slope = data.GetSteepness(localX01, localZ01);
+            if (slope > maxTreeSlope) continue;
+
+            int prototypeIndex = rng.Next(0, prototypeCount);
+            float scale = Mathf.Lerp(minTreeScale, maxTreeScale, (float)rng.NextDouble());
+
+            trees.Add(new TreeInstance
+            {
+                position = new Vector3(localX01, height01, localZ01),
+                prototypeIndex = prototypeIndex,
+                widthScale = scale,
+                heightScale = scale,
+                color = Color.white,
+                lightmapColor = Color.white
+            });
+        }
+
+        data.treeInstances = trees.ToArray();
+    }
+
+    int GetChunkSeed(Vector2Int coord, int salt)
+    {
+        unchecked
+        {
+            int hash = seed;
+            hash = hash * 73856093 ^ coord.x;
+            hash = hash * 19349663 ^ coord.y;
+            hash = hash * 83492791 ^ salt;
+            return hash;
+        }
     }
 
     void FillBaseTextureWeights(float[] weights)
@@ -560,16 +670,12 @@ public class InfiniteTerrainGenerator : MonoBehaviour
             weights[2] = layer2Weight;
             weights[3] = layer3Weight;
             weights[4] = layer4Weight;
-
-            for (int i = 5; i < layerCount; i++)
-                weights[i] = 0.05f;
+            for (int i = 5; i < layerCount; i++) weights[i] = 0.05f;
         }
         else
         {
             float equalWeight = 1f / layerCount;
-
-            for (int i = 0; i < layerCount; i++)
-                weights[i] = equalWeight;
+            for (int i = 0; i < layerCount; i++) weights[i] = equalWeight;
         }
     }
 
@@ -577,82 +683,65 @@ public class InfiniteTerrainGenerator : MonoBehaviour
     {
         FillBaseTextureWeights(weights);
 
+        int strongestLayer = 0;
+        float strongestValue = float.MinValue;
+
         for (int i = 0; i < weights.Length; i++)
         {
-            // ¨C­Ó Layer ¨Ï¥Î¤£¦P offset¡AÁ×§K©Ò¦³ Layer ¦P¨BÅÜ¤Æ
+            // æ¯å€‹ Layer ä½¿ç”¨ä¸åŒ offset,é¿å…æ‰€æœ‰ Layer åŒæ­¥è®ŠåŒ–
             float layerOffsetX = seedOffsetX + i * 137.31f;
             float layerOffsetZ = seedOffsetZ + i * 291.73f;
 
-            // ¤j¤Ø«× noise¡G¨M©w¤j½d³ò§÷½è¤À¥¬
+            // å¤§å°ºåº¦ noise:æ±ºå®šå¤§ç¯„åœæè³ªåˆ†å¸ƒ
             float macro = Mathf.PerlinNoise(
                 worldX * textureMacroNoiseScale + layerOffsetX,
-                worldZ * textureMacroNoiseScale + layerOffsetZ
-            );
+                worldZ * textureMacroNoiseScale + layerOffsetZ);
 
-            // ¤p¤Ø«× noise¡GÅı¶K¹Ï§ó¯}¸H¡B¤£³W«h
+            // å°å°ºåº¦ noise:è®“è²¼åœ–æ›´ç ´ç¢ã€ä¸è¦å‰‡
             float detail = Mathf.PerlinNoise(
                 worldX * textureDetailNoiseScale + layerOffsetX * 1.7f,
-                worldZ * textureDetailNoiseScale + layerOffsetZ * 1.7f
-            );
+                worldZ * textureDetailNoiseScale + layerOffsetZ * 1.7f);
 
-            // Âà¦¨ -1 ~ 1
+            // è½‰æˆ -1 ~ 1
             float macroSigned = (macro - 0.5f) * 2f;
             float detailSigned = (detail - 0.5f) * 2f;
 
-            float noiseFactor =
-                1f
-                + macroSigned * textureNoiseStrength
-                + detailSigned * textureDetailStrength;
+            float noiseFactor = 1f + macroSigned * textureNoiseStrength + detailSigned * textureDetailStrength;
 
-            weights[i] *= Mathf.Max(0.001f, noiseFactor);
+            float w = weights[i] * Mathf.Max(0.001f, noiseFactor);
+            // å°æ¯”å¼·åŒ–:è®“æŸäº›å€åŸŸæ›´æ˜é¡¯åå‘ç‰¹å®š Layer
+            w = Mathf.Pow(w, textureContrast);
+            weights[i] = w;
 
-            // ¹ï¤ñ±j¤Æ¡GÅı¬Y¨Ç°Ï°ì§ó©úÅã°¾¦V¯S©w Layer
-            weights[i] = Mathf.Pow(weights[i], textureContrast);
-        }
-
-        // ÃB¥~¥[¤J¤@­Ó winner boost¡G
-        // §ä¥X¥Ø«e³Ì±jªº Layer¡A¦A§â¥¦¥[±j¡AÁ×§K©Ò¦³§÷½è²V±o¤Ó¥­§¡¡C
-        int strongestLayer = 0;
-        float strongestValue = weights[0];
-
-        for (int i = 1; i < weights.Length; i++)
-        {
-            if (weights[i] > strongestValue)
+            // åŒæ™‚æ‰¾å‡ºæœ€å¼· Layer,å…å¾—ç¨å¾Œå†è·‘ä¸€æ¬¡è¿´åœˆ
+            if (w > strongestValue)
             {
-                strongestValue = weights[i];
+                strongestValue = w;
                 strongestLayer = i;
             }
         }
 
+        // Winner boost:åŠ å¼·æœ€å¼· Layer,é¿å…æ‰€æœ‰æ¬Šé‡æ··å¾—å¤ªå¹³å‡
         weights[strongestLayer] *= 1.8f;
     }
 
     void NormalizeWeights(float[] weights)
     {
         float sum = 0f;
-
         for (int i = 0; i < weights.Length; i++)
         {
-            weights[i] = Mathf.Max(0f, weights[i]);
+            if (weights[i] < 0f) weights[i] = 0f;
             sum += weights[i];
         }
 
         if (sum <= 0.0001f)
         {
             float equalWeight = 1f / weights.Length;
-
-            for (int i = 0; i < weights.Length; i++)
-            {
-                weights[i] = equalWeight;
-            }
-
+            for (int i = 0; i < weights.Length; i++) weights[i] = equalWeight;
             return;
         }
 
-        for (int i = 0; i < weights.Length; i++)
-        {
-            weights[i] /= sum;
-        }
+        float invSum = 1f / sum;
+        for (int i = 0; i < weights.Length; i++) weights[i] *= invSum;
     }
-
 }

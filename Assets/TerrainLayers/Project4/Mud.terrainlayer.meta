@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5092227d37aab2e449e1a3bdc703eff9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298911
+  packageName: 'Time Ghost: Environment'
+  packageVersion: 1.0
+  assetPath: Assets/Art/Terrain/sj_terrain_materials/TL_Cracked_Mud_Ground.terrainlayer
+  uploadId: 700993
